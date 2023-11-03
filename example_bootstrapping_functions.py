@@ -120,6 +120,25 @@ def set_up_figure(measures):
 
     return num_rows,total_columns
 
+# creates strip plot of categorical data
+def create_categorical_scatterplot(data,x_measure,y_measure,hue_measure=''):
+
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+
+    # create a subplot figure with 1 row and 2 columns
+    fig = plt.figure(figsize=(10,5))
+
+    # create a strip plot for each measure
+    if hue_measure:
+        sns.stripplot(x=x_measure,y=y_measure,data=data,hue=hue_measure,size=5)
+        plt.legend()
+    else:
+        sns.stripplot(x=x_measure,y=y_measure,data=data,size=5,legend=False)
+
+    # make tight layout
+    fig.tight_layout()
+
 
 if __name__ == "__main__":
     main()
